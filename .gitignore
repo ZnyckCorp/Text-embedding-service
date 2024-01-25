@@ -1,0 +1,73 @@
+# Node.js
+node_modules/
+npm-debug.log
+
+# Dependency directories
+/jspm_packages/
+/typings/
+
+# Distribution
+/dist/
+/out/
+
+# Environment files
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+pnpm-*
+/coverage/
+
+# Editor directories and files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# .suo, .ntvs_analysis.dat, .csproj.user, .refresh, .sln.docstates
+*.suo
+*.ntvs_analysis.dat
+*.csproj.user
+*.suo
+*.user
+*.suo
+*.ntvs_analysis.dat
+*-CMakeCache.txt
+*-CMakeFiles/
+*.sln.docstates
+*.suo
+*.user
+*.md
+
+# Visual Studio Code folders
+.vscode/
+
+# Windows Installer files
+.cabal
+*.cabal
+*.msi
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+*.rds
+*.crproj
+*.user
+*.suo
+*.userosscache
+*.suo
+*.user
