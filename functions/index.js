@@ -42,8 +42,14 @@ async function callPredict(req,res) {
   const request = { endpoint, instances, parameters };
 
   // Predict request
-  return await predictionServiceClient.predict(request).then((_res)=>{
-    return res.status(200).send({data : _res});
+  return await predictionServiceClient.predict(request).then(async (response) => {
+ 
+   const vectorValues = response[0]?.predictions[0]?.structValue?.fields?.embeddings?.structValue?.fields?.values?.listValue?.values.map(value => value.numberValue);
+    
+    if (!vectorValues || vectorValues.length === 0) {
+      throw new Error('Unable to extract vector values from the response.');
+    }
+    return res.status(200).send({data : vectorValues});
   }).catch((err)=>{
     return res.status(500).json({ error: 'Internal Server Error', details: err.message });
   });
@@ -55,10 +61,10 @@ exports.predictFunction = functions.https.onRequest(async (req, res) => {
     if (req.method !== 'POST') {
       return res.status(405).send('Method Not Allowed');
     }
-
+    
     //Validate that the request has a body and content property
     if (!req.body || !req.body.content || !req.body.title || !req.body.secret_code || req.body.secret_code !== functions.config().config.secret_code) {
-      return res.status(400).json({ error: 'Bad Request', details: 'Request body error.' });
+      return res.status(400).json({ error: 'Bad Request', details: 'Request body error.'});
     }
 
     //length validation
