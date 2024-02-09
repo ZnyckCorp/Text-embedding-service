@@ -68,12 +68,12 @@ exports.predictFunction = functions.https.onRequest(async (req, res) => {
     }
 
     //length validation
-    if (req.body.title.length >= 100) {
+    if (req.body.title.length >= 1000) {
       return res.status(400).json({ error: 'Bad Request', details: 'Request body title should not contain more than 100 characters' });
     }
     
-    if (req.body.content.length >= 2000) {
-      return res.status(400).json({ error: 'Bad Request', details: 'Request body content should not contain more than 2000 characters.' });
+    if (req.body.content.length >= 5000) {
+      return res.status(400).json({ error: 'Bad Request', details: 'Request body content should not contain more than 4000 characters.' });
     }
     
     // Call AI Platform Prediction
